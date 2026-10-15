@@ -1,9 +1,15 @@
 # Microsoft Fabric demos
 
-Validated, reproducible technical demos for Microsoft Fabric architects and
-engineers. Each demo focuses on a practical scenario and includes the Fabric
-artifacts and guidance needed to reproduce it.
+A growing collection of small, reproducible Microsoft Fabric demonstrations for Microsoft Fabric architects and engineers.
+Each demo focuses on a practical scenario and includes the Fabric artifacts and guidance needed to reproduce it.
 
+## Demo categories
+
+- `new`: Hands-on tests of recently announced or released capabilities
+- `how`: Evergreen implementation patterns
+- `explained`: Focused answers to nuanced technical questions
+- `lab`: Larger scenarios combining several capabilities
+  
 ## Available demos
 
 - [Deployment plans](new/fabric-deployment-plan/) - Deploy Fabric items in
@@ -31,6 +37,11 @@ Synchronize the workspace, then follow the demo README for prerequisites,
 setup, expected results, limitations, and cleanup. Demo data is synthetic, and
 features marked as Preview should be verified against the latest Microsoft
 Fabric documentation.
+
+## Disclaimer
+
+This is a personal project. The examples are not official Microsoft guidance. Product behaviour and availability can change.
+Verify current details in official documentation before using a pattern in production.
 
 ## License
 
