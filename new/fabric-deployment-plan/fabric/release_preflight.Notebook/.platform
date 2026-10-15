@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "release_preflight",
+    "description": "Report the execution workspace and fail when the allow_release parameter is false."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "842f8540-c6b9-b3bb-4e9f-f4b321dd6d73"
+  }
+}

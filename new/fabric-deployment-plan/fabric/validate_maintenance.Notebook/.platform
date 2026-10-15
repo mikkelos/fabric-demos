@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "validate_maintenance",
+    "description": "Validate the target synthetic maintenance table: five rows, unique asset identifiers, and two critical assets. Designed for post-deployment validation."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0020cf0f-d263-b6db-4c02-e605dff62620"
+  }
+}

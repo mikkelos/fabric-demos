@@ -1,0 +1,35 @@
+$schema: https://developer.microsoft.com/json-schemas/fabric/item/deploymentPlan/definition/plan/1.0.0/schema.json
+version: 1.0.0
+groups:
+  - name: deploy_lakehouse
+    logicalId: d08e36af-92b4-a2ff-44ac-3efd51345192
+    dependsOn:
+      - groupName: deploy_preflight
+  - name: deploy_preflight
+    logicalId: 842f8540-c6b9-b3bb-4e9f-f4b321dd6d73
+    postActions:
+      - name: release_preflight_SynapseNotebook
+        job:
+          type: Execute
+          logicalId: 842f8540-c6b9-b3bb-4e9f-f4b321dd6d73
+          parameters:
+            - name: allow_release
+              value: 'True'
+  - name: seed_data
+    logicalId: 6e67dce7-f9a6-b905-4d7f-f63232a64b5a
+    postActions:
+      - name: seed_maintenance_SynapseNotebook
+        job:
+          type: Execute
+          logicalId: 6e67dce7-f9a6-b905-4d7f-f63232a64b5a
+    dependsOn:
+      - groupName: deploy_lakehouse
+  - name: validate_data
+    logicalId: 0020cf0f-d263-b6db-4c02-e605dff62620
+    postActions:
+      - name: validate_maintenance_SynapseNotebook
+        job:
+          type: Execute
+          logicalId: 0020cf0f-d263-b6db-4c02-e605dff62620
+    dependsOn:
+      - groupName: seed_data

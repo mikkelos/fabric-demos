@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "maintenance_lh",
+    "description": "Hold the synthetic maintenance dataset."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d08e36af-92b4-a2ff-44ac-3efd51345192"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "isolated item not in plan"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5898621e-e753-8a97-4001-5a446b171951"
+  }
+}
