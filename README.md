@@ -5,9 +5,7 @@ Each demo focuses on a practical scenario and includes the Fabric artifacts and 
 
 ## Repository structure
 
-All demos live under `demos/<demo-name>/` with stable, lowercase kebab-case
-names. Topics, format, maturity, and validation status belong in each demo's
-README, not in category folders that change as a feature ages.
+All demos live under `demos/<demo-name>/`. Topics, format, maturity, and validation status reside in each demo's README.
 
 ```text
 demos/
@@ -46,17 +44,6 @@ Synchronize the workspace, then follow the demo README for prerequisites,
 setup, expected results, limitations, and cleanup. Demo data is synthetic, and
 features marked as Preview should be verified against the latest Microsoft
 Fabric documentation.
-
-### Updating an existing Git connection
-
-The deployment plan demo previously lived under
-`new/fabric-deployment-plan/`. Its new location is
-`demos/fabric-deployment-plan/`.
-
-For a workspace connected to the old Git folder, update its Git integration
-configuration to `demos/fabric-deployment-plan/fabric` before synchronizing.
-Review the incoming changes before applying them; do not apply deletions
-caused by a connection that still points to the old folder.
 
 ## Disclaimer
 
