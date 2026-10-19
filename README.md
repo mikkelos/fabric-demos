@@ -3,18 +3,25 @@
 A growing collection of small, reproducible Microsoft Fabric demonstrations for Microsoft Fabric architects and engineers.
 Each demo focuses on a practical scenario and includes the Fabric artifacts and guidance needed to reproduce it.
 
-## Demo categories
+## Repository structure
 
-- `new`: Hands-on tests of recently announced or released capabilities
-- `how`: Evergreen implementation patterns
-- `explained`: Focused answers to nuanced technical questions
-- `lab`: Larger scenarios combining several capabilities
-  
+All demos live under `demos/<demo-name>/`. Topics, format, maturity, and validation status reside in each demo's README.
+
+```text
+demos/
+`-- fabric-deployment-plan/
+    |-- README.md
+    `-- fabric/
+```
+
+Each demo contains only the technical assets and instructions needed to
+understand and reproduce it.
+
 ## Available demos
 
-- [Deployment plans](new/fabric-deployment-plan/) - Deploy Fabric items in
-  order, initialize and validate a lakehouse, promote through a deployment
-  pipeline, and branch out to a new workspace.
+| Demo | Outcome | Topics | Format | Status |
+| --- | --- | --- | --- | --- |
+| [Deployment plans](demos/fabric-deployment-plan/) | Deploy items in order, initialize and validate a lakehouse, and use pipeline promotion and Git branch-out. | ALM, Deployment, Automation | How-to | Validated |
 
 ## Using the demos
 
@@ -30,7 +37,7 @@ GitHub repository through **Workspace settings > Git integration**. Select the
 plan demo, use:
 
 ```text
-new/fabric-deployment-plan/fabric
+demos/fabric-deployment-plan/fabric
 ```
 
 Synchronize the workspace, then follow the demo README for prerequisites,

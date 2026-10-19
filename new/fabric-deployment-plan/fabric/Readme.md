@@ -1,1 +1,0 @@
-This is an auto-created file for new/fabric-deployment-plan/fabric

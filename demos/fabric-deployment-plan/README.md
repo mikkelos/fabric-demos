@@ -12,6 +12,8 @@ deployment pipeline promotion and for Git branch-out to a new workspace.
 | --- | --- |
 | Demo status | Validated |
 | Last updated | 2026-10-15 |
+| Topics | ALM, Deployment, Automation |
+| Format | How-to |
 | Product maturity | Deployment plans: Preview |
 
 ## Demo scenario
@@ -78,6 +80,9 @@ No external data source, gateway, client secret, or custom application
 registration is required.
 
 ## Setup
+
+For Fabric Git integration, select the `main` branch and Git folder
+`demos/fabric-deployment-plan/fabric` in this repository.
 
 1. Create the Dev and Test workspaces and assign them to a two-stage deployment
    pipeline.

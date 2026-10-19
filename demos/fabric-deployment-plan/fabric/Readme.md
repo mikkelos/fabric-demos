@@ -1,0 +1,1 @@
+This folder contains the Fabric item definitions for the deployment plan demo.
