@@ -9,6 +9,10 @@ All demos live under `demos/<demo-name>/`. Topics, format, maturity, and validat
 
 ```text
 demos/
+|-- fabric-connection-manager/
+|   |-- README.md
+|   |-- app/
+|   `-- fabric/
 `-- fabric-deployment-plan/
     |-- README.md
     `-- fabric/
@@ -21,6 +25,7 @@ understand and reproduce it.
 
 | Demo | Outcome | Topics | Format | Status |
 | --- | --- | --- | --- | --- |
+| [Connection manager](demos/fabric-connection-manager/) | Inventory tenant connections and record deletion-review requests without deleting them. | Governance, Connections, Fabric Apps | Demo | Validated |
 | [Deployment plans](demos/fabric-deployment-plan/) | Deploy items in order, initialize and validate a lakehouse, and use pipeline promotion and Git branch-out. | ALM, Deployment, Automation | How-to | Validated |
 
 ## Using the demos
@@ -31,19 +36,19 @@ Clone the repository if you want to inspect or edit the files locally:
 git clone https://github.com/mikkelos/fabric-demos.git
 ```
 
-To load a demo into Fabric, create a workspace and connect it directly to this
-GitHub repository through **Workspace settings > Git integration**. Select the
-`main` branch and the Git folder documented by the demo. For the deployment
-plan demo, use:
+Follow each demo's setup instructions to create its Fabric items. Some demos
+support Fabric Git integration. For the deployment plan demo, connect a
+workspace to this repository through **Workspace settings > Git integration**,
+select the `main` branch, and use:
 
 ```text
 demos/fabric-deployment-plan/fabric
 ```
 
-Synchronize the workspace, then follow the demo README for prerequisites,
-setup, expected results, limitations, and cleanup. Demo data is synthetic, and
-features marked as Preview should be verified against the latest Microsoft
-Fabric documentation.
+Follow the demo README for prerequisites, setup, expected results, limitations,
+and cleanup. Some demos use synthetic data; others collect metadata from your
+tenant. Features marked as Preview should be verified against the latest
+Microsoft Fabric documentation.
 
 ## Disclaimer
 

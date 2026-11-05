@@ -1,0 +1,35 @@
+{
+  "name": "fabric-connection-manager",
+  "description": "Fabric admin connection API showcase with asynchronous notebook collection and a snapshot-backed dashboard.",
+  "license": "MIT",
+  "author": "Microsoft",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "configure:deployment": "node scripts/deployment-config.mjs",
+    "test:deployment-config": "node --test scripts/deployment-config.test.mjs",
+    "check:public-config": "node scripts/check-public-config.mjs",
+    "predev": "npm run configure:deployment",
+    "pretypecheck": "npm run configure:deployment",
+    "dev": "rayfin dev",
+    "dev:frontend": "npm run -w @rayfin-app/frontend dev",
+    "build": "npm run -w @rayfin-app/data build && npm run -w @rayfin-app/functions build && npm run -w @rayfin-app/frontend build",
+    "build:fabric": "npm run -w @rayfin-app/data build && npm run -w @rayfin-app/functions build && npm run -w @rayfin-app/frontend build:fabric",
+    "lint": "npm run -w @rayfin-app/frontend lint",
+    "preview": "npm run -w @rayfin-app/frontend preview",
+    "test": "npm run test:deployment-config && npm run -w @rayfin-app/functions build && npm run -w @rayfin-app/functions test && npm run -w @rayfin-app/frontend test",
+    "test:watch": "npm run -w @rayfin-app/frontend test:watch",
+    "typecheck": "tsc -b",
+    "rayfin:up": "node scripts/deploy.mjs",
+    "setup:deletion-store": "node scripts/apply-deletion-schema.mjs"
+  },
+  "devDependencies": {
+    "@microsoft/rayfin-cli": "^1.36.0-alpha",
+    "@microsoft/rayfin-guide": "^1.36.0-alpha",
+    "typescript": "~5.7.2"
+  }
+}

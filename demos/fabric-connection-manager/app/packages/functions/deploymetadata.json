@@ -1,0 +1,176 @@
+{
+  "runtime": "TypeScript",
+  "functionsMetadata": [
+    {
+      "name": "logForDeletion",
+      "scriptFile": "src\\function_app.ts",
+      "bindings": [
+        {
+          "name": "req",
+          "type": "httpTrigger",
+          "direction": "in",
+          "authLevel": "anonymous",
+          "methods": [
+            "post"
+          ],
+          "route": "logForDeletion"
+        },
+        {
+          "name": "$return",
+          "type": "http",
+          "direction": "out"
+        },
+        {
+          "name": "__generic_Fabric",
+          "direction": "in",
+          "type": "FabricItem",
+          "alias": "",
+          "audienceType": "Fabric"
+        },
+        {
+          "name": "__generic_Sql",
+          "direction": "in",
+          "type": "FabricItem",
+          "alias": "",
+          "audienceType": "Sql"
+        }
+      ],
+      "fabricProperties": {
+        "fabricMetadataSchemaVersion": "1.0",
+        "fabricFunctionReturnType": "Promise<string>",
+        "fabricFunctionParameters": [
+          {
+            "name": "requestId",
+            "dataType": "string",
+            "hasDefaultValue": false
+          },
+          {
+            "name": "snapshotRunId",
+            "dataType": "string",
+            "hasDefaultValue": false
+          },
+          {
+            "name": "selectedIdsJson",
+            "dataType": "string",
+            "hasDefaultValue": false
+          },
+          {
+            "name": "context",
+            "dataType": "RayfinContext<UniversalAppSchema, AudienceType.Sql | AudienceType.Fabric>",
+            "hasDefaultValue": false
+          }
+        ]
+      },
+      "functionCode": "udf.func(\r\n  'logForDeletion',\r\n  async (\r\n    requestId: string,\r\n    snapshotRunId: string,\r\n    selectedIdsJson: string,\r\n    context: RayfinContext<UniversalAppSchema, AudienceType.Sql | AudienceType.Fabric>,\r\n  ): Promise<string> => {\r\n    const correlationId = randomUUID();\r\n    try {\r\n      let targets: SqlTargets | undefined;\r\n      const result = await admitDeletion({ requestId, snapshotRunId, selectedIdsJson }, {\r\n        requester: () => verifiedRequester(context),\r\n        snapshot: async ids => {\r\n          targets = await discoverTargets(context.Tokens.Fabric);\r\n          return readSnapshot(targets.inventory, context.Tokens.Sql, ids);\r\n        },\r\n        log: batch => {\r\n          if (!targets) throw new AdmissionError('RUNTIME_UNAVAILABLE');\r\n          return logRequests(targets.queue, context.Tokens.Sql, batch);\r\n        },\r\n        now: Date.now,\r\n      });\r\n      return JSON.stringify(result);\r\n    } catch (error) {\r\n      throw invocationError(error, correlationId);\r\n    }\r\n  },\r\n  [],\r\n)"
+    },
+    {
+      "name": "getDeletionActions",
+      "scriptFile": "src\\function_app.ts",
+      "bindings": [
+        {
+          "name": "req",
+          "type": "httpTrigger",
+          "direction": "in",
+          "authLevel": "anonymous",
+          "methods": [
+            "post"
+          ],
+          "route": "getDeletionActions"
+        },
+        {
+          "name": "$return",
+          "type": "http",
+          "direction": "out"
+        },
+        {
+          "name": "__generic_Fabric",
+          "direction": "in",
+          "type": "FabricItem",
+          "alias": "",
+          "audienceType": "Fabric"
+        },
+        {
+          "name": "__generic_Sql",
+          "direction": "in",
+          "type": "FabricItem",
+          "alias": "",
+          "audienceType": "Sql"
+        }
+      ],
+      "fabricProperties": {
+        "fabricMetadataSchemaVersion": "1.0",
+        "fabricFunctionReturnType": "Promise<string>",
+        "fabricFunctionParameters": [
+          {
+            "name": "afterId",
+            "dataType": "string",
+            "hasDefaultValue": false
+          },
+          {
+            "name": "watermark",
+            "dataType": "string",
+            "hasDefaultValue": false
+          },
+          {
+            "name": "context",
+            "dataType": "RayfinContext<UniversalAppSchema, AudienceType.Sql | AudienceType.Fabric>",
+            "hasDefaultValue": false
+          }
+        ]
+      },
+      "functionCode": "udf.func(\r\n  'getDeletionActions',\r\n  async (\r\n    afterId: string,\r\n    watermark: string,\r\n    context: RayfinContext<UniversalAppSchema, AudienceType.Sql | AudienceType.Fabric>,\r\n  ): Promise<string> => {\r\n    const correlationId = randomUUID();\r\n    try {\r\n      return JSON.stringify(await getActions(afterId, watermark, actionsDependencies(context)));\r\n    } catch (error) {\r\n      throw invocationError(error, correlationId);\r\n    }\r\n  },\r\n  [],\r\n)"
+    },
+    {
+      "name": "cancelDeletionRequests",
+      "scriptFile": "src\\function_app.ts",
+      "bindings": [
+        {
+          "name": "req",
+          "type": "httpTrigger",
+          "direction": "in",
+          "authLevel": "anonymous",
+          "methods": [
+            "post"
+          ],
+          "route": "cancelDeletionRequests"
+        },
+        {
+          "name": "$return",
+          "type": "http",
+          "direction": "out"
+        },
+        {
+          "name": "__generic_Fabric",
+          "direction": "in",
+          "type": "FabricItem",
+          "alias": "",
+          "audienceType": "Fabric"
+        },
+        {
+          "name": "__generic_Sql",
+          "direction": "in",
+          "type": "FabricItem",
+          "alias": "",
+          "audienceType": "Sql"
+        }
+      ],
+      "fabricProperties": {
+        "fabricMetadataSchemaVersion": "1.0",
+        "fabricFunctionReturnType": "Promise<string>",
+        "fabricFunctionParameters": [
+          {
+            "name": "selectedRequestIdsJson",
+            "dataType": "string",
+            "hasDefaultValue": false
+          },
+          {
+            "name": "context",
+            "dataType": "RayfinContext<UniversalAppSchema, AudienceType.Sql | AudienceType.Fabric>",
+            "hasDefaultValue": false
+          }
+        ]
+      },
+      "functionCode": "udf.func(\r\n  'cancelDeletionRequests',\r\n  async (\r\n    selectedRequestIdsJson: string,\r\n    context: RayfinContext<UniversalAppSchema, AudienceType.Sql | AudienceType.Fabric>,\r\n  ): Promise<string> => {\r\n    const correlationId = randomUUID();\r\n    try {\r\n      return JSON.stringify(await cancelActions(selectedRequestIdsJson, actionsDependencies(context)));\r\n    } catch (error) {\r\n      throw invocationError(error, correlationId);\r\n    }\r\n  },\r\n  [],\r\n)"
+    }
+  ]
+}

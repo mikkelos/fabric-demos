@@ -1,0 +1,286 @@
+{
+  "source": "connectioninventory",
+  "connector": "fabric-sqlanalytics",
+  "schemas": [
+    {
+      "schemaName": "inventory",
+      "tables": [
+        {
+          "tableName": "collection_runs",
+          "columns": [
+            {
+              "columnName": "run_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "started_at",
+              "dataType": "datetime2",
+              "isNullable": false,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "completed_at",
+              "dataType": "datetime2",
+              "isNullable": true,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "status",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "connection_count",
+              "dataType": "bigint",
+              "isNullable": false,
+              "precision": 19,
+              "scale": 0
+            },
+            {
+              "columnName": "role_assignment_count",
+              "dataType": "bigint",
+              "isNullable": false,
+              "precision": 19,
+              "scale": 0
+            },
+            {
+              "columnName": "owner_lookup_failure_count",
+              "dataType": "bigint",
+              "isNullable": false,
+              "precision": 19,
+              "scale": 0
+            },
+            {
+              "columnName": "request_count",
+              "dataType": "bigint",
+              "isNullable": false,
+              "precision": 19,
+              "scale": 0
+            },
+            {
+              "columnName": "error_code",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            }
+          ]
+        },
+        {
+          "tableName": "connection_role_assignments",
+          "columns": [
+            {
+              "columnName": "snapshot_assignment_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "run_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "connection_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "assignment_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "principal_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "principal_type",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "principal_display_name",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "role",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "collected_at",
+              "dataType": "datetime2",
+              "isNullable": false,
+              "datePrecision": 6
+            }
+          ]
+        },
+        {
+          "tableName": "connection_snapshots",
+          "columns": [
+            {
+              "columnName": "snapshot_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "run_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "collected_at",
+              "dataType": "datetime2",
+              "isNullable": false,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "connection_id",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "display_name",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "connectivity_type",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "source_type",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "gateway_id",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "privacy_level",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "credential_type",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "connection_encryption",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "created_at",
+              "dataType": "datetime2",
+              "isNullable": true,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "last_bound_at",
+              "dataType": "datetime2",
+              "isNullable": true,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "last_credential_used_at",
+              "dataType": "datetime2",
+              "isNullable": true,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "my_last_bound_at",
+              "dataType": "datetime2",
+              "isNullable": true,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "my_last_credential_used_at",
+              "dataType": "datetime2",
+              "isNullable": true,
+              "datePrecision": 6
+            },
+            {
+              "columnName": "owner_lookup_status",
+              "dataType": "varchar",
+              "isNullable": false,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "owner_lookup_error_code",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "owner_lookup_retry_after_seconds",
+              "dataType": "bigint",
+              "isNullable": true,
+              "precision": 19,
+              "scale": 0
+            },
+            {
+              "columnName": "endpoint",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "endpoint_category",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "single_sign_on_type",
+              "dataType": "varchar",
+              "isNullable": true,
+              "maxLength": 8000
+            },
+            {
+              "columnName": "skip_test_connection",
+              "dataType": "bit",
+              "isNullable": true
+            },
+            {
+              "columnName": "allow_usage_in_user_controlled_code",
+              "dataType": "bit",
+              "isNullable": true
+            },
+            {
+              "columnName": "allow_connection_usage_in_gateway",
+              "dataType": "bit",
+              "isNullable": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "2.0",
+  "functions": [
+    {
+      "functionName": "logForDeletion",
+      "delegateParameters": [
+        {
+          "name": "requestId",
+          "type": "string",
+          "optional": false,
+          "hasDefault": false,
+          "position": 0,
+          "isFabricParameter": false
+        },
+        {
+          "name": "snapshotRunId",
+          "type": "string",
+          "optional": false,
+          "hasDefault": false,
+          "position": 1,
+          "isFabricParameter": false
+        },
+        {
+          "name": "selectedIdsJson",
+          "type": "string",
+          "optional": false,
+          "hasDefault": false,
+          "position": 2,
+          "isFabricParameter": false
+        },
+        {
+          "name": "context",
+          "type": "RayfinContext<UniversalAppSchema, AudienceType.Fabric | AudienceType.Sql>",
+          "optional": false,
+          "hasDefault": false,
+          "position": 3,
+          "isFabricParameter": true,
+          "fabricParameterType": "RayfinContext<UniversalAppSchema, AudienceType.Fabric | AudienceType.Sql>"
+        }
+      ],
+      "contextAudiences": [
+        "Fabric",
+        "Sql"
+      ]
+    },
+    {
+      "functionName": "getDeletionActions",
+      "delegateParameters": [
+        {
+          "name": "afterId",
+          "type": "string",
+          "optional": false,
+          "hasDefault": false,
+          "position": 0,
+          "isFabricParameter": false
+        },
+        {
+          "name": "watermark",
+          "type": "string",
+          "optional": false,
+          "hasDefault": false,
+          "position": 1,
+          "isFabricParameter": false
+        },
+        {
+          "name": "context",
+          "type": "RayfinContext<UniversalAppSchema, AudienceType.Fabric | AudienceType.Sql>",
+          "optional": false,
+          "hasDefault": false,
+          "position": 2,
+          "isFabricParameter": true,
+          "fabricParameterType": "RayfinContext<UniversalAppSchema, AudienceType.Fabric | AudienceType.Sql>"
+        }
+      ],
+      "contextAudiences": [
+        "Fabric",
+        "Sql"
+      ]
+    },
+    {
+      "functionName": "cancelDeletionRequests",
+      "delegateParameters": [
+        {
+          "name": "selectedRequestIdsJson",
+          "type": "string",
+          "optional": false,
+          "hasDefault": false,
+          "position": 0,
+          "isFabricParameter": false
+        },
+        {
+          "name": "context",
+          "type": "RayfinContext<UniversalAppSchema, AudienceType.Fabric | AudienceType.Sql>",
+          "optional": false,
+          "hasDefault": false,
+          "position": 1,
+          "isFabricParameter": true,
+          "fabricParameterType": "RayfinContext<UniversalAppSchema, AudienceType.Fabric | AudienceType.Sql>"
+        }
+      ],
+      "contextAudiences": [
+        "Fabric",
+        "Sql"
+      ]
+    }
+  ]
+}
